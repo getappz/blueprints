@@ -16,8 +16,6 @@ config:
   # Environment (production, staging)
   environment: "production"
 
-tools:
-  render: "latest"
 
 setup:
   - desc: "Install Render CLI"

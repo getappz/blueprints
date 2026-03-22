@@ -16,8 +16,6 @@ config:
   # Railway token (set via RAILWAY_TOKEN env var or config)
   railway_token: ""
 
-tools:
-  railway: "latest"
 
 setup:
   - desc: "Install Railway CLI"

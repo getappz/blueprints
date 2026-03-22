@@ -16,8 +16,6 @@ config:
   # Production branch (default: main)
   production_branch: "main"
 
-tools:
-  wrangler: "latest"
 
 setup:
   - desc: "Install Wrangler CLI"

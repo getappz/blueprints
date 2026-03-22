@@ -18,9 +18,6 @@ config:
   # Use gh-pages package (true) or git push (false)
   use_gh_pages: true
 
-tools:
-  gh-pages: "latest"
-  gh: "latest"
 
 setup:
   - desc: "Install gh-pages CLI"

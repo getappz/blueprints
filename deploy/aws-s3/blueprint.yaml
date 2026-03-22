@@ -20,8 +20,6 @@ config:
   # S3 prefix/path (optional, for subdirectories)
   s3_prefix: ""
 
-tools:
-  awscli: "latest"
 
 setup:
   - desc: "Install AWS CLI"

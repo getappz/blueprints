@@ -18,8 +18,6 @@ config:
   # Location/region (default: eastus2)
   location: "eastus2"
 
-tools:
-  azure-cli: "latest"
 
 setup:
   - desc: "Install Azure CLI and Static Web Apps CLI"

@@ -14,8 +14,6 @@ config:
   # Surge token (set via SURGE_TOKEN env var or config)
   surge_token: ""
 
-tools:
-  surge: "latest"
 
 setup:
   - desc: "Install Surge CLI"

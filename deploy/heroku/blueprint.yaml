@@ -14,8 +14,6 @@ config:
   # Heroku API key (set via HEROKU_API_KEY env var or config)
   heroku_api_key: ""
 
-tools:
-  heroku: "latest"
 
 setup:
   - desc: "Install Heroku CLI"

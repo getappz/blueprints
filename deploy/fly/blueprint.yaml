@@ -16,8 +16,6 @@ config:
   # Region (default: ord)
   region: "ord"
 
-tools:
-  flyctl: "latest"
 
 setup:
   - desc: "Install Fly CLI"

@@ -16,8 +16,6 @@ config:
   # Firebase token (set via FIREBASE_TOKEN env var or config)
   firebase_token: ""
 
-tools:
-  firebase-tools: "latest"
 
 setup:
   - desc: "Install Firebase CLI"

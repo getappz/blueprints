@@ -14,8 +14,6 @@ config:
   # Netlify access token (set via NETLIFY_AUTH_TOKEN env var or config)
   netlify_token: ""
 
-tools:
-  netlify-cli: "latest"
 
 setup:
   - desc: "Install Netlify CLI"
