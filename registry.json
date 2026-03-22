@@ -81,5 +81,19 @@
         "api": { "description": "Laravel API-only project" }
       }
     }
+  },
+  "deploy": {
+    "vercel": { "description": "Deploy to Vercel" },
+    "netlify": { "description": "Deploy to Netlify" },
+    "aws-s3": { "description": "Deploy to AWS S3 with optional CloudFront CDN" },
+    "cloudflare-pages": { "description": "Deploy to Cloudflare Pages" },
+    "firebase": { "description": "Deploy to Firebase Hosting" },
+    "fly": { "description": "Deploy to Fly.io" },
+    "github-pages": { "description": "Deploy to GitHub Pages" },
+    "heroku": { "description": "Deploy to Heroku" },
+    "railway": { "description": "Deploy to Railway" },
+    "render": { "description": "Deploy to Render" },
+    "surge": { "description": "Deploy to Surge.sh" },
+    "azure-static": { "description": "Deploy to Azure Static Web Apps" }
   }
 }

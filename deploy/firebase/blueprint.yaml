@@ -1,0 +1,66 @@
+version: 1
+
+meta:
+  name: "Firebase Hosting"
+  description: "Deploy to Firebase Hosting"
+
+config:
+  # Firebase project ID (required)
+  project_id: ""
+  # Firebase site ID (for hosting, optional)
+  site_id: ""
+  # Build command
+  build_command: "npm run build"
+  # Build output directory (default: dist)
+  build_output_dir: "dist"
+  # Firebase token (set via FIREBASE_TOKEN env var or config)
+  firebase_token: ""
+
+tools:
+  firebase-tools: "latest"
+
+setup:
+  - desc: "Install Firebase CLI"
+    add_dependency: ["firebase-tools"]
+    dev: true
+
+tasks:
+  deploy:
+    - desc: "Deploy to Firebase Hosting"
+      run_locally: "firebase deploy --only hosting"
+
+  deploy:preview:
+    - desc: "Deploy preview to Firebase Hosting"
+      run_locally: "firebase hosting:channel:deploy preview"
+
+  deploy:production:
+    - desc: "Deploy to production on Firebase Hosting"
+      run_locally: "firebase deploy --only hosting --project {{project_id}}"
+
+  preview:
+    - desc: "Preview deployment locally"
+      run_locally: "firebase emulators:start --only hosting"
+
+  firebase:init:
+    - desc: "Initialize Firebase project"
+      run_locally: "firebase init hosting"
+
+  firebase:login:
+    - desc: "Login to Firebase"
+      run_locally: "firebase login"
+
+  firebase:use:
+    - desc: "Set active Firebase project"
+      run_locally: "firebase use {{project_id}}"
+
+  firebase:list:
+    - desc: "List Firebase projects"
+      run_locally: "firebase projects:list"
+
+  firebase:open:
+    - desc: "Open Firebase console in browser"
+      run_locally: "firebase open"
+
+  firebase:functions:deploy:
+    - desc: "Deploy Firebase Functions"
+      run_locally: "firebase deploy --only functions"
