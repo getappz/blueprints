@@ -1,0 +1,37 @@
+version: 1
+
+meta:
+  name: "Astro Starlight Docs"
+  description: "Documentation site powered by Astro Starlight"
+  framework: "astro"
+  create_command: "npm create astro@latest -- --template starlight"
+
+setup:
+  - desc: "Create getting started guide"
+    write_file:
+      path: "src/content/docs/guides/getting-started.mdx"
+      content: |
+        ---
+        title: Getting Started
+        description: A guide to get up and running.
+        ---
+
+        ## Prerequisites
+
+        - Node.js 18 or higher
+        - A package manager (npm, pnpm, or yarn)
+
+        ## Installation
+
+        ```bash
+        npm install
+        npm run dev
+        ```
+
+tasks:
+  dev:
+    - run_locally: "npm run dev"
+  build:
+    - run_locally: "npm run build"
+  preview:
+    - run_locally: "npm run preview"

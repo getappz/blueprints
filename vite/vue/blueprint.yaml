@@ -1,0 +1,38 @@
+version: 1
+
+meta:
+  name: "Vite + Vue + Tailwind"
+  description: "Vite with Vue 3 and Tailwind CSS"
+  framework: "vite"
+  create_command: "npm create vite@latest -- --template vue-ts"
+
+setup:
+  - desc: "Install Tailwind CSS"
+    add_dependency: ["tailwindcss", "@tailwindcss/vite"]
+    dev: true
+
+  - desc: "Add Tailwind Vite plugin"
+    write_file:
+      path: "vite.config.ts"
+      content: |
+        import { defineConfig } from "vite";
+        import vue from "@vitejs/plugin-vue";
+        import tailwindcss from "@tailwindcss/vite";
+
+        export default defineConfig({
+          plugins: [vue(), tailwindcss()],
+        });
+
+  - desc: "Add Tailwind import"
+    write_file:
+      path: "src/style.css"
+      content: |
+        @import "tailwindcss";
+
+tasks:
+  dev:
+    - run_locally: "npm run dev"
+  build:
+    - run_locally: "npm run build"
+  preview:
+    - run_locally: "npm run preview"

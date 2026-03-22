@@ -1,0 +1,59 @@
+version: 1
+
+meta:
+  name: "Astro Blog"
+  description: "Astro blog with MDX support and content collections"
+  framework: "astro"
+  create_command: "npm create astro@latest"
+
+setup:
+  - desc: "Add MDX integration"
+    run_locally: "npx astro add mdx -y"
+
+  - desc: "Add sitemap integration"
+    run_locally: "npx astro add sitemap -y"
+
+  - desc: "Create blog content directory"
+    mkdir: "src/content/blog"
+
+  - desc: "Create content config"
+    write_file:
+      path: "src/content.config.ts"
+      content: |
+        import { defineCollection, z } from "astro:content";
+
+        const blog = defineCollection({
+          type: "content",
+          schema: z.object({
+            title: z.string(),
+            description: z.string(),
+            pubDate: z.coerce.date(),
+            updatedDate: z.coerce.date().optional(),
+            heroImage: z.string().optional(),
+            draft: z.boolean().default(false),
+          }),
+        });
+
+        export const collections = { blog };
+
+  - desc: "Create sample blog post"
+    write_file:
+      path: "src/content/blog/hello-world.mdx"
+      content: |
+        ---
+        title: "Hello World"
+        description: "My first blog post"
+        pubDate: 2026-03-22
+        ---
+
+        # Hello World
+
+        Welcome to my blog! This is my first post built with Astro and MDX.
+
+tasks:
+  dev:
+    - run_locally: "npm run dev"
+  build:
+    - run_locally: "npm run build"
+  preview:
+    - run_locally: "npm run preview"

@@ -1,0 +1,42 @@
+version: 1
+
+meta:
+  name: "WordPress + WooCommerce"
+  description: "WordPress with WooCommerce and Storefront theme"
+  framework: "wordpress"
+
+setup:
+  - desc: "Install WooCommerce"
+    run_locally: "wp plugin install woocommerce --activate"
+
+  - desc: "Install Storefront theme"
+    run_locally: "wp theme install storefront --activate"
+
+  - desc: "Set shop page"
+    run_locally: "wp option update woocommerce_shop_page_id $(wp post create --post_type=page --post_title='Shop' --post_status=publish --porcelain)"
+
+  - desc: "Set cart page"
+    run_locally: "wp option update woocommerce_cart_page_id $(wp post create --post_type=page --post_title='Cart' --post_status=publish --porcelain)"
+
+  - desc: "Set checkout page"
+    run_locally: "wp option update woocommerce_checkout_page_id $(wp post create --post_type=page --post_title='Checkout' --post_status=publish --porcelain)"
+
+  - desc: "Set my account page"
+    run_locally: "wp option update woocommerce_myaccount_page_id $(wp post create --post_type=page --post_title='My Account' --post_status=publish --porcelain)"
+
+  - desc: "Set currency"
+    run_locally: "wp option update woocommerce_currency USD"
+
+  - desc: "Set store location"
+    run_locally: "wp option update woocommerce_default_country US:CA"
+
+tasks:
+  dev:
+    - run_locally: "ddev start && ddev launch"
+  stop:
+    - run_locally: "ddev stop"
+  wp:
+    - run_locally: "ddev wp"
+  import:sample:
+    - desc: "Import WooCommerce sample data"
+      run_locally: "wp plugin install wordpress-importer --activate && wp import wp-content/plugins/woocommerce/sample-data/sample_products.xml --authors=create"

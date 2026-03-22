@@ -4,19 +4,25 @@
     "nextjs": {
       "name": "Next.js",
       "blueprints": {
-        "default": { "description": "Base Next.js setup" }
+        "default": { "description": "Base Next.js setup" },
+        "tailwind": { "description": "Next.js + Tailwind CSS + PostCSS" },
+        "prisma": { "description": "Next.js + Prisma ORM + PostgreSQL" }
       }
     },
     "astro": {
       "name": "Astro",
       "blueprints": {
-        "default": { "description": "Base Astro setup" }
+        "default": { "description": "Base Astro setup" },
+        "blog": { "description": "Astro blog with MDX and content collections" },
+        "docs": { "description": "Astro Starlight documentation site" }
       }
     },
     "vite": {
       "name": "Vite",
       "blueprints": {
-        "default": { "description": "Base Vite setup" }
+        "default": { "description": "Base Vite setup" },
+        "react": { "description": "Vite + React + Tailwind CSS" },
+        "vue": { "description": "Vite + Vue 3 + Tailwind CSS" }
       }
     },
     "sveltekit": {
@@ -64,13 +70,15 @@
     "wordpress": {
       "name": "WordPress",
       "blueprints": {
-        "default": { "description": "Base WordPress setup" }
+        "default": { "description": "Base WordPress setup" },
+        "woocommerce": { "description": "WordPress + WooCommerce + Storefront theme" }
       }
     },
     "laravel": {
       "name": "Laravel",
       "blueprints": {
-        "default": { "description": "Base Laravel setup" }
+        "default": { "description": "Base Laravel setup" },
+        "api": { "description": "Laravel API-only project" }
       }
     }
   }

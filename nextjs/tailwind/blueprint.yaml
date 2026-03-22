@@ -1,0 +1,37 @@
+version: 1
+
+meta:
+  name: "Next.js + Tailwind CSS"
+  description: "Next.js with Tailwind CSS and PostCSS preconfigured"
+  framework: "nextjs"
+  create_command: "npx create-next-app@latest"
+
+setup:
+  - desc: "Install Tailwind CSS"
+    add_dependency: ["tailwindcss", "@tailwindcss/postcss", "postcss"]
+    dev: true
+
+  - desc: "Create PostCSS config"
+    write_file:
+      path: "postcss.config.mjs"
+      content: |
+        const config = {
+          plugins: {
+            "@tailwindcss/postcss": {},
+          },
+        };
+        export default config;
+
+  - desc: "Add Tailwind import to globals.css"
+    write_file:
+      path: "src/app/globals.css"
+      content: |
+        @import "tailwindcss";
+
+tasks:
+  dev:
+    - run_locally: "npm run dev"
+  build:
+    - run_locally: "npm run build"
+  lint:
+    - run_locally: "npm run lint"

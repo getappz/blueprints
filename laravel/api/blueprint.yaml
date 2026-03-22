@@ -1,0 +1,67 @@
+version: 1
+
+meta:
+  name: "Laravel API"
+  description: "Laravel API-only project (no Blade views)"
+  framework: "laravel"
+  create_command: "composer create-project laravel/laravel"
+  package_manager: "composer"
+
+setup:
+  - desc: "Install API dependencies"
+    run_locally: "php artisan install:api"
+
+  - desc: "Create base API controller"
+    write_file:
+      path: "app/Http/Controllers/Api/BaseController.php"
+      content: |
+        <?php
+
+        namespace App\Http\Controllers\Api;
+
+        use App\Http\Controllers\Controller;
+        use Illuminate\Http\JsonResponse;
+
+        class BaseController extends Controller
+        {
+            protected function success($data = null, string $message = 'OK', int $code = 200): JsonResponse
+            {
+                return response()->json([
+                    'success' => true,
+                    'message' => $message,
+                    'data' => $data,
+                ], $code);
+            }
+
+            protected function error(string $message, int $code = 400, $errors = null): JsonResponse
+            {
+                return response()->json([
+                    'success' => false,
+                    'message' => $message,
+                    'errors' => $errors,
+                ], $code);
+            }
+        }
+
+  - desc: "Create health check route"
+    patch_file:
+      path: "routes/api.php"
+      after: "use Illuminate\\Support\\Facades\\Route;"
+      content: |2
+
+        Route::get('/health', function () {
+            return response()->json(['status' => 'ok', 'timestamp' => now()]);
+        });
+
+tasks:
+  dev:
+    - run_locally: "php artisan serve"
+  test:
+    - run_locally: "php artisan test"
+  migrate:
+    - run_locally: "php artisan migrate"
+  migrate:fresh:
+    - run_locally: "php artisan migrate:fresh --seed"
+  routes:
+    - desc: "List API routes"
+      run_locally: "php artisan route:list --path=api"
