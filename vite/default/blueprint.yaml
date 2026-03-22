@@ -1,0 +1,18 @@
+version: 1
+
+meta:
+  name: "Vite"
+  description: "Base Vite project"
+  framework: "vite"
+  create_command: "npm create vite@latest"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "npm run dev"
+  build:
+    - desc: "Build for production"
+      run_locally: "npm run build"
+  preview:
+    - desc: "Preview production build"
+      run_locally: "npm run preview"

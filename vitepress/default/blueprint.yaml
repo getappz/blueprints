@@ -1,0 +1,18 @@
+version: 1
+
+meta:
+  name: "VitePress"
+  description: "Base VitePress project"
+  framework: "vitepress"
+  create_command: "npx vitepress@latest init"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "npm run docs:dev"
+  build:
+    - desc: "Build for production"
+      run_locally: "npm run docs:build"
+  preview:
+    - desc: "Preview production build"
+      run_locally: "npm run docs:preview"

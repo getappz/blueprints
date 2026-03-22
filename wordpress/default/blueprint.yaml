@@ -1,0 +1,20 @@
+version: 1
+
+meta:
+  name: "WordPress"
+  description: "Base WordPress project"
+  framework: "wordpress"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "ddev start && ddev launch"
+  stop:
+    - desc: "Stop development server"
+      run_locally: "ddev stop"
+  logs:
+    - desc: "View server logs"
+      run_locally: "ddev logs -f"
+  wp:
+    - desc: "Run WP-CLI command"
+      run_locally: "ddev wp"

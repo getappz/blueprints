@@ -1,0 +1,18 @@
+version: 1
+
+meta:
+  name: "Remix"
+  description: "Base Remix project"
+  framework: "remix"
+  create_command: "npx create-remix@latest"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "npm run dev"
+  build:
+    - desc: "Build for production"
+      run_locally: "npm run build"
+  start:
+    - desc: "Start production server"
+      run_locally: "npm run start"

@@ -1,0 +1,18 @@
+version: 1
+
+meta:
+  name: "Docusaurus"
+  description: "Base Docusaurus project"
+  framework: "docusaurus"
+  create_command: "npx create-docusaurus@latest"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "npm run start"
+  build:
+    - desc: "Build for production"
+      run_locally: "npm run build"
+  serve:
+    - desc: "Serve production build"
+      run_locally: "npm run serve"

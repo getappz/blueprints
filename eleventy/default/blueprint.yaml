@@ -1,0 +1,15 @@
+version: 1
+
+meta:
+  name: "Eleventy"
+  description: "Base Eleventy project"
+  framework: "eleventy"
+  create_command: "npm create @11ty/eleventy@latest"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "npx @11ty/eleventy --serve"
+  build:
+    - desc: "Build for production"
+      run_locally: "npx @11ty/eleventy"

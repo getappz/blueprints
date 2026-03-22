@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "frameworks": {
+    "nextjs": {
+      "name": "Next.js",
+      "blueprints": {
+        "default": { "description": "Base Next.js setup" }
+      }
+    },
+    "astro": {
+      "name": "Astro",
+      "blueprints": {
+        "default": { "description": "Base Astro setup" }
+      }
+    },
+    "vite": {
+      "name": "Vite",
+      "blueprints": {
+        "default": { "description": "Base Vite setup" }
+      }
+    },
+    "sveltekit": {
+      "name": "SvelteKit",
+      "blueprints": {
+        "default": { "description": "Base SvelteKit setup" }
+      }
+    },
+    "nuxt": {
+      "name": "Nuxt",
+      "blueprints": {
+        "default": { "description": "Base Nuxt setup" }
+      }
+    },
+    "remix": {
+      "name": "Remix",
+      "blueprints": {
+        "default": { "description": "Base Remix setup" }
+      }
+    },
+    "docusaurus": {
+      "name": "Docusaurus",
+      "blueprints": {
+        "default": { "description": "Base Docusaurus setup" }
+      }
+    },
+    "vitepress": {
+      "name": "VitePress",
+      "blueprints": {
+        "default": { "description": "Base VitePress setup" }
+      }
+    },
+    "gatsby": {
+      "name": "Gatsby",
+      "blueprints": {
+        "default": { "description": "Base Gatsby setup" }
+      }
+    },
+    "eleventy": {
+      "name": "Eleventy",
+      "blueprints": {
+        "default": { "description": "Base Eleventy setup" }
+      }
+    },
+    "wordpress": {
+      "name": "WordPress",
+      "blueprints": {
+        "default": { "description": "Base WordPress setup" }
+      }
+    },
+    "laravel": {
+      "name": "Laravel",
+      "blueprints": {
+        "default": { "description": "Base Laravel setup" }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+version: 1
+
+meta:
+  name: "Next.js"
+  description: "Base Next.js project"
+  framework: "nextjs"
+  create_command: "npx create-next-app@latest"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "npm run dev"
+  build:
+    - desc: "Build for production"
+      run_locally: "npm run build"
+  start:
+    - desc: "Start production server"
+      run_locally: "npm run start"
+  lint:
+    - desc: "Run linter"
+      run_locally: "npm run lint"

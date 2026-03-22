@@ -1,0 +1,21 @@
+version: 1
+
+meta:
+  name: "Gatsby"
+  description: "Base Gatsby project"
+  framework: "gatsby"
+  create_command: "npm create gatsby@latest"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "npm run develop"
+  build:
+    - desc: "Build for production"
+      run_locally: "npm run build"
+  serve:
+    - desc: "Serve production build"
+      run_locally: "npm run serve"
+  clean:
+    - desc: "Clean build artifacts"
+      run_locally: "npm run clean"

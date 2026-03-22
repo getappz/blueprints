@@ -1,0 +1,18 @@
+version: 1
+
+meta:
+  name: "Nuxt"
+  description: "Base Nuxt project"
+  framework: "nuxt"
+  create_command: "npx nuxi@latest init"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "npm run dev"
+  build:
+    - desc: "Build for production"
+      run_locally: "npm run build"
+  preview:
+    - desc: "Preview production build"
+      run_locally: "npm run preview"

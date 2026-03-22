@@ -1,0 +1,22 @@
+version: 1
+
+meta:
+  name: "Laravel"
+  description: "Base Laravel project"
+  framework: "laravel"
+  create_command: "composer create-project laravel/laravel"
+  package_manager: "composer"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "php artisan serve"
+  build:
+    - desc: "Build frontend assets"
+      run_locally: "npm run build"
+  migrate:
+    - desc: "Run database migrations"
+      run_locally: "php artisan migrate"
+  test:
+    - desc: "Run tests"
+      run_locally: "php artisan test"

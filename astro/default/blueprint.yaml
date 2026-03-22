@@ -1,0 +1,18 @@
+version: 1
+
+meta:
+  name: "Astro"
+  description: "Base Astro project"
+  framework: "astro"
+  create_command: "npm create astro@latest"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "npm run dev"
+  build:
+    - desc: "Build for production"
+      run_locally: "npm run build"
+  preview:
+    - desc: "Preview production build"
+      run_locally: "npm run preview"

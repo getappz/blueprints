@@ -1,0 +1,18 @@
+version: 1
+
+meta:
+  name: "SvelteKit"
+  description: "Base SvelteKit project"
+  framework: "sveltekit"
+  create_command: "npm create svelte@latest"
+
+tasks:
+  dev:
+    - desc: "Start development server"
+      run_locally: "npm run dev"
+  build:
+    - desc: "Build for production"
+      run_locally: "npm run build"
+  preview:
+    - desc: "Preview production build"
+      run_locally: "npm run preview"
