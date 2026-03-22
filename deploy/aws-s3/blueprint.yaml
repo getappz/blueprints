@@ -29,15 +29,15 @@ setup:
 tasks:
   deploy:
     - desc: "Deploy to AWS S3"
-      run_locally: "aws s3 sync {{build_output_dir}} s3://{{s3_bucket}}/{{s3_prefix}} --region {{aws_region}} --delete"
+      run: "aws s3 sync {{build_output_dir}} s3://{{s3_bucket}}/{{s3_prefix}} --region {{aws_region}} --delete"
 
   deploy:production:
     - desc: "Deploy to production S3 bucket"
-      run_locally: "aws s3 sync {{build_output_dir}} s3://{{s3_bucket}}/{{s3_prefix}} --region {{aws_region}} --delete --cache-control \"public, max-age=31536000, immutable\""
+      run: "aws s3 sync {{build_output_dir}} s3://{{s3_bucket}}/{{s3_prefix}} --region {{aws_region}} --delete --cache-control \"public, max-age=31536000, immutable\""
 
   cloudfront:invalidate:
     - desc: "Invalidate CloudFront cache"
-      run_locally: "aws cloudfront create-invalidation --distribution-id {{cloudfront_distribution_id}} --paths \"/*\""
+      run: "aws cloudfront create-invalidation --distribution-id {{cloudfront_distribution_id}} --paths \"/*\""
 
   deploy:with-invalidation:
     - deploy
@@ -45,8 +45,8 @@ tasks:
 
   aws:s3:list:
     - desc: "List S3 bucket contents"
-      run_locally: "aws s3 ls s3://{{s3_bucket}} --region {{aws_region}}"
+      run: "aws s3 ls s3://{{s3_bucket}} --region {{aws_region}}"
 
   aws:s3:delete:
     - desc: "Delete all files from S3 bucket (use with caution)"
-      run_locally: "aws s3 rm s3://{{s3_bucket}} --recursive --region {{aws_region}}"
+      run: "aws s3 rm s3://{{s3_bucket}} --recursive --region {{aws_region}}"

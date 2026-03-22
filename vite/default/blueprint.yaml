@@ -9,10 +9,10 @@ meta:
 tasks:
   dev:
     - desc: "Start development server"
-      run_locally: "npm run dev"
+      run: "npm run dev"
   build:
     - desc: "Build for production"
-      run_locally: "npm run build"
+      run: "npm run build"
   preview:
     - desc: "Preview production build"
-      run_locally: "npm run preview"
+      run: "npm run preview"

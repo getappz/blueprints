@@ -23,20 +23,20 @@ setup:
 tasks:
   deploy:
     - desc: "Deploy to Surge.sh"
-      run_locally: "surge {{build_output_dir}} {{domain}}"
+      run: "surge {{build_output_dir}} {{domain}}"
 
   deploy:production:
     - desc: "Deploy to production on Surge.sh"
-      run_locally: "surge {{build_output_dir}} {{domain}}"
+      run: "surge {{build_output_dir}} {{domain}}"
 
   surge:domain:set:
     - desc: "Set custom domain (set SURGE_CUSTOM_DOMAIN)"
-      run_locally: "surge {{build_output_dir}} {{SURGE_CUSTOM_DOMAIN}}"
+      run: "surge {{build_output_dir}} {{SURGE_CUSTOM_DOMAIN}}"
 
   surge:list:
     - desc: "List all deployments"
-      run_locally: "surge list"
+      run: "surge list"
 
   surge:teardown:
     - desc: "Remove domain from Surge (set SURGE_DOMAIN_TO_REMOVE)"
-      run_locally: "surge teardown {{SURGE_DOMAIN_TO_REMOVE}}"
+      run: "surge teardown {{SURGE_DOMAIN_TO_REMOVE}}"

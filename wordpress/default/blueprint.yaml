@@ -8,13 +8,13 @@ meta:
 tasks:
   dev:
     - desc: "Start development server"
-      run_locally: "ddev start && ddev launch"
+      run: "ddev start && ddev launch"
   stop:
     - desc: "Stop development server"
-      run_locally: "ddev stop"
+      run: "ddev stop"
   logs:
     - desc: "View server logs"
-      run_locally: "ddev logs -f"
+      run: "ddev logs -f"
   wp:
     - desc: "Run WP-CLI command"
-      run_locally: "ddev wp"
+      run: "ddev wp"

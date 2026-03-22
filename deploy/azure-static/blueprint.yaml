@@ -27,32 +27,32 @@ setup:
 tasks:
   deploy:
     - desc: "Deploy to Azure Static Web Apps"
-      run_locally: "swa deploy {{build_output_dir}} --app-name {{app_name}} --resource-group {{resource_group}}"
+      run: "swa deploy {{build_output_dir}} --app-name {{app_name}} --resource-group {{resource_group}}"
 
   deploy:production:
     - desc: "Deploy to production on Azure Static Web Apps"
-      run_locally: "swa deploy {{build_output_dir}} --app-name {{app_name}} --resource-group {{resource_group}} --env production"
+      run: "swa deploy {{build_output_dir}} --app-name {{app_name}} --resource-group {{resource_group}} --env production"
 
   azure:login:
     - desc: "Login to Azure"
-      run_locally: "az login"
+      run: "az login"
 
   azure:create:
     - desc: "Create Azure Static Web App"
-      run_locally: "az staticwebapp create --name {{app_name}} --resource-group {{resource_group}} --location {{location}}"
+      run: "az staticwebapp create --name {{app_name}} --resource-group {{resource_group}} --location {{location}}"
 
   azure:env:set:
     - desc: "Set environment variable (set AZURE_ENV_KEY and AZURE_ENV_VALUE)"
-      run_locally: "az staticwebapp appsettings set --name {{app_name}} --resource-group {{resource_group}} --setting-names {{AZURE_ENV_KEY}}={{AZURE_ENV_VALUE}}"
+      run: "az staticwebapp appsettings set --name {{app_name}} --resource-group {{resource_group}} --setting-names {{AZURE_ENV_KEY}}={{AZURE_ENV_VALUE}}"
 
   azure:env:list:
     - desc: "List environment variables"
-      run_locally: "az staticwebapp appsettings list --name {{app_name}} --resource-group {{resource_group}}"
+      run: "az staticwebapp appsettings list --name {{app_name}} --resource-group {{resource_group}}"
 
   azure:domains:list:
     - desc: "List custom domains"
-      run_locally: "az staticwebapp hostname list --name {{app_name}} --resource-group {{resource_group}}"
+      run: "az staticwebapp hostname list --name {{app_name}} --resource-group {{resource_group}}"
 
   azure:domains:add:
     - desc: "Add custom domain (set AZURE_DOMAIN)"
-      run_locally: "az staticwebapp hostname set --name {{app_name}} --resource-group {{resource_group}} --hostname {{AZURE_DOMAIN}}"
+      run: "az staticwebapp hostname set --name {{app_name}} --resource-group {{resource_group}} --hostname {{AZURE_DOMAIN}}"

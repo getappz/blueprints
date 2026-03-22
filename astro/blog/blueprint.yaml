@@ -8,10 +8,10 @@ meta:
 
 setup:
   - desc: "Add MDX integration"
-    run_locally: "npx astro add mdx -y"
+    run: "npx astro add mdx -y"
 
   - desc: "Add sitemap integration"
-    run_locally: "npx astro add sitemap -y"
+    run: "npx astro add sitemap -y"
 
   - desc: "Create blog content directory"
     mkdir: "src/content/blog"
@@ -52,8 +52,8 @@ setup:
 
 tasks:
   dev:
-    - run_locally: "npm run dev"
+    - run: "npm run dev"
   build:
-    - run_locally: "npm run build"
+    - run: "npm run build"
   preview:
-    - run_locally: "npm run preview"
+    - run: "npm run preview"

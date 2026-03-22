@@ -9,7 +9,7 @@ meta:
 
 setup:
   - desc: "Install API dependencies"
-    run_locally: "php artisan install:api"
+    run: "php artisan install:api"
 
   - desc: "Create base API controller"
     write_file:
@@ -55,13 +55,13 @@ setup:
 
 tasks:
   dev:
-    - run_locally: "php artisan serve"
+    - run: "php artisan serve"
   test:
-    - run_locally: "php artisan test"
+    - run: "php artisan test"
   migrate:
-    - run_locally: "php artisan migrate"
+    - run: "php artisan migrate"
   migrate:fresh:
-    - run_locally: "php artisan migrate:fresh --seed"
+    - run: "php artisan migrate:fresh --seed"
   routes:
     - desc: "List API routes"
-      run_locally: "php artisan route:list --path=api"
+      run: "php artisan route:list --path=api"

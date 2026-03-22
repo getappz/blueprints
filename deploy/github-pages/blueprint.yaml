@@ -27,11 +27,11 @@ setup:
 tasks:
   deploy:
     - desc: "Deploy to GitHub Pages"
-      run_locally: "gh-pages -d {{build_output_dir}}"
+      run: "gh-pages -d {{build_output_dir}}"
 
   deploy:git:
     - desc: "Deploy to GitHub Pages using git push"
-      run_locally: |
+      run: |
         git checkout -b {{deploy_branch}} || git checkout {{deploy_branch}}
         git rm -rf .
         cp -r {{build_output_dir}}/* .
@@ -42,10 +42,10 @@ tasks:
 
   github:setup:
     - desc: "Setup GitHub Pages (enable in repository settings)"
-      run_locally: "gh repo edit {{repository}} --enable-pages"
+      run: "gh repo edit {{repository}} --enable-pages"
 
   github:domain:set:
     - desc: "Set custom domain (set GITHUB_DOMAIN)"
-      run_locally: |
+      run: |
         echo "{{GITHUB_DOMAIN}}" > {{build_output_dir}}/CNAME
         gh-pages -d {{build_output_dir}}

@@ -30,8 +30,8 @@ setup:
 
 tasks:
   dev:
-    - run_locally: "npm run dev"
+    - run: "npm run dev"
   build:
-    - run_locally: "npm run build"
+    - run: "npm run build"
   lint:
-    - run_locally: "npm run lint"
+    - run: "npm run lint"

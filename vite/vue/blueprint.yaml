@@ -31,8 +31,8 @@ setup:
 
 tasks:
   dev:
-    - run_locally: "npm run dev"
+    - run: "npm run dev"
   build:
-    - run_locally: "npm run build"
+    - run: "npm run build"
   preview:
-    - run_locally: "npm run preview"
+    - run: "npm run preview"

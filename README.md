@@ -58,20 +58,21 @@ setup:
       API_URL: "{{variable_name}}"
 
   - desc: "Run setup command"
-    run_locally: "npx tailwindcss init -p"
+    run: "npx tailwindcss init -p"
 
 tasks:
   dev:
-    - run_locally: "npm run dev"
+    - run: "npm run dev"
   build:
-    - run_locally: "npm run build"
+    - run: "npm run build"
 ```
 
 ## Setup Step Types
 
 | Step | Description |
 |------|-------------|
-| `run_locally` | Execute a local command |
+| `run` | Execute a command (locally, or remotely if `hosts` configured) |
+| `run_locally` | Execute a command locally (even when `hosts` are configured) |
 | `add_dependency` | Install packages (with `dev: true` for dev deps) |
 | `write_file` | Create/overwrite a file (`path` + `content` or `template`) |
 | `patch_file` | Insert/replace in existing files (`after`, `before`, `replace`) |

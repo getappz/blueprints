@@ -25,40 +25,40 @@ setup:
 tasks:
   deploy:
     - desc: "Deploy to Firebase Hosting"
-      run_locally: "firebase deploy --only hosting"
+      run: "firebase deploy --only hosting"
 
   deploy:preview:
     - desc: "Deploy preview to Firebase Hosting"
-      run_locally: "firebase hosting:channel:deploy preview"
+      run: "firebase hosting:channel:deploy preview"
 
   deploy:production:
     - desc: "Deploy to production on Firebase Hosting"
-      run_locally: "firebase deploy --only hosting --project {{project_id}}"
+      run: "firebase deploy --only hosting --project {{project_id}}"
 
   preview:
     - desc: "Preview deployment locally"
-      run_locally: "firebase emulators:start --only hosting"
+      run: "firebase emulators:start --only hosting"
 
   firebase:init:
     - desc: "Initialize Firebase project"
-      run_locally: "firebase init hosting"
+      run: "firebase init hosting"
 
   firebase:login:
     - desc: "Login to Firebase"
-      run_locally: "firebase login"
+      run: "firebase login"
 
   firebase:use:
     - desc: "Set active Firebase project"
-      run_locally: "firebase use {{project_id}}"
+      run: "firebase use {{project_id}}"
 
   firebase:list:
     - desc: "List Firebase projects"
-      run_locally: "firebase projects:list"
+      run: "firebase projects:list"
 
   firebase:open:
     - desc: "Open Firebase console in browser"
-      run_locally: "firebase open"
+      run: "firebase open"
 
   firebase:functions:deploy:
     - desc: "Deploy Firebase Functions"
-      run_locally: "firebase deploy --only functions"
+      run: "firebase deploy --only functions"

@@ -25,40 +25,40 @@ setup:
 tasks:
   deploy:
     - desc: "Deploy to Fly.io"
-      run_locally: "flyctl deploy"
+      run: "flyctl deploy"
 
   deploy:production:
     - desc: "Deploy to production on Fly.io"
-      run_locally: "flyctl deploy --app {{app_name}}"
+      run: "flyctl deploy --app {{app_name}}"
 
   fly:init:
     - desc: "Initialize Fly.io app"
-      run_locally: "flyctl launch --name {{app_name}}"
+      run: "flyctl launch --name {{app_name}}"
 
   fly:login:
     - desc: "Login to Fly.io"
-      run_locally: "flyctl auth login"
+      run: "flyctl auth login"
 
   fly:secrets:list:
     - desc: "List secrets/environment variables"
-      run_locally: "flyctl secrets list --app {{app_name}}"
+      run: "flyctl secrets list --app {{app_name}}"
 
   fly:secrets:set:
     - desc: "Set secret/environment variable (set FLY_SECRET_KEY and FLY_SECRET_VALUE)"
-      run_locally: "flyctl secrets set {{FLY_SECRET_KEY}}={{FLY_SECRET_VALUE}} --app {{app_name}}"
+      run: "flyctl secrets set {{FLY_SECRET_KEY}}={{FLY_SECRET_VALUE}} --app {{app_name}}"
 
   fly:logs:
     - desc: "View deployment logs"
-      run_locally: "flyctl logs --app {{app_name}}"
+      run: "flyctl logs --app {{app_name}}"
 
   fly:status:
     - desc: "Check app status"
-      run_locally: "flyctl status --app {{app_name}}"
+      run: "flyctl status --app {{app_name}}"
 
   fly:open:
     - desc: "Open app in browser"
-      run_locally: "flyctl open --app {{app_name}}"
+      run: "flyctl open --app {{app_name}}"
 
   fly:scale:
     - desc: "Scale app (set FLY_SCALE_COUNT)"
-      run_locally: "flyctl scale count {{FLY_SCALE_COUNT}} --app {{app_name}}"
+      run: "flyctl scale count {{FLY_SCALE_COUNT}} --app {{app_name}}"

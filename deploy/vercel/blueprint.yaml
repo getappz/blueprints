@@ -27,36 +27,36 @@ setup:
 tasks:
   deploy:
     - desc: "Deploy to Vercel"
-      run_locally: "vercel deploy --prod"
+      run: "vercel deploy --prod"
 
   deploy:preview:
     - desc: "Deploy preview to Vercel"
-      run_locally: "vercel deploy"
+      run: "vercel deploy"
 
   deploy:production:
     - desc: "Deploy to production on Vercel"
-      run_locally: "vercel deploy --prod"
+      run: "vercel deploy --prod"
 
   preview:
     - desc: "Preview deployment locally"
-      run_locally: "vercel dev"
+      run: "vercel dev"
 
   vercel:env:list:
     - desc: "List environment variables"
-      run_locally: "vercel env ls"
+      run: "vercel env ls"
 
   vercel:env:add:
     - desc: "Add environment variable (set VERCEL_ENV_KEY and VERCEL_ENV_VALUE)"
-      run_locally: "vercel env add {{VERCEL_ENV_KEY}}"
+      run: "vercel env add {{VERCEL_ENV_KEY}}"
 
   vercel:domains:list:
     - desc: "List domains"
-      run_locally: "vercel domains ls"
+      run: "vercel domains ls"
 
   vercel:domains:add:
     - desc: "Add domain (set VERCEL_DOMAIN)"
-      run_locally: "vercel domains add {{VERCEL_DOMAIN}}"
+      run: "vercel domains add {{VERCEL_DOMAIN}}"
 
   vercel:logs:
     - desc: "View deployment logs"
-      run_locally: "vercel logs"
+      run: "vercel logs"

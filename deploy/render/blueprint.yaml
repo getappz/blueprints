@@ -25,32 +25,32 @@ setup:
 tasks:
   deploy:
     - desc: "Deploy to Render"
-      run_locally: "render deploy"
+      run: "render deploy"
 
   deploy:production:
     - desc: "Deploy to production on Render"
-      run_locally: "render deploy --service {{service_id}}"
+      run: "render deploy --service {{service_id}}"
 
   render:init:
     - desc: "Initialize Render service"
-      run_locally: "render init"
+      run: "render init"
 
   render:login:
     - desc: "Login to Render"
-      run_locally: "render login"
+      run: "render login"
 
   render:env:list:
     - desc: "List environment variables"
-      run_locally: "render env list --service {{service_id}}"
+      run: "render env list --service {{service_id}}"
 
   render:env:set:
     - desc: "Set environment variable (set RENDER_ENV_KEY and RENDER_ENV_VALUE)"
-      run_locally: "render env set {{RENDER_ENV_KEY}}={{RENDER_ENV_VALUE}} --service {{service_id}}"
+      run: "render env set {{RENDER_ENV_KEY}}={{RENDER_ENV_VALUE}} --service {{service_id}}"
 
   render:logs:
     - desc: "View deployment logs"
-      run_locally: "render logs --service {{service_id}}"
+      run: "render logs --service {{service_id}}"
 
   render:status:
     - desc: "Check service status"
-      run_locally: "render status --service {{service_id}}"
+      run: "render status --service {{service_id}}"

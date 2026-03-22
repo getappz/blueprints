@@ -18,7 +18,7 @@ setup:
     add_dependency: ["@prisma/client"]
 
   - desc: "Initialize Prisma"
-    run_locally: "npx prisma init"
+    run: "npx prisma init"
 
   - desc: "Set database URL"
     set_env:
@@ -45,18 +45,18 @@ setup:
 
 tasks:
   dev:
-    - run_locally: "npm run dev"
+    - run: "npm run dev"
   build:
-    - run_locally: "npm run build"
+    - run: "npm run build"
   db:push:
     - desc: "Push schema to database"
-      run_locally: "npx prisma db push"
+      run: "npx prisma db push"
   db:migrate:
     - desc: "Run migrations"
-      run_locally: "npx prisma migrate dev"
+      run: "npx prisma migrate dev"
   db:studio:
     - desc: "Open Prisma Studio"
-      run_locally: "npx prisma studio"
+      run: "npx prisma studio"
   db:seed:
     - desc: "Run seed script"
-      run_locally: "npx prisma db seed"
+      run: "npx prisma db seed"
