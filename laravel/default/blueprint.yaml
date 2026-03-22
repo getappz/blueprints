@@ -14,9 +14,82 @@ tasks:
   build:
     - desc: "Build frontend assets"
       run_locally: "npm run build"
-  migrate:
-    - desc: "Run database migrations"
-      run_locally: "php artisan migrate"
   test:
     - desc: "Run tests"
       run_locally: "php artisan test"
+
+  # Database
+  migrate:
+    - desc: "Run database migrations"
+      run_locally: "php artisan migrate --force"
+  migrate:fresh:
+    - desc: "Drop all tables and re-run migrations"
+      run_locally: "php artisan migrate:fresh --force"
+  migrate:rollback:
+    - desc: "Rollback last migration"
+      run_locally: "php artisan migrate:rollback --force"
+  migrate:status:
+    - desc: "Show migration status"
+      run_locally: "php artisan migrate:status"
+  db:seed:
+    - desc: "Run database seeders"
+      run_locally: "php artisan db:seed --force"
+
+  # Maintenance
+  down:
+    - desc: "Put application in maintenance mode"
+      run_locally: "php artisan down"
+  up:
+    - desc: "Bring application out of maintenance mode"
+      run_locally: "php artisan up"
+
+  # Cache & optimization
+  cache:clear:
+    - desc: "Clear application cache"
+      run_locally: "php artisan cache:clear"
+  config:cache:
+    - desc: "Cache configuration"
+      run_locally: "php artisan config:cache"
+  config:clear:
+    - desc: "Clear configuration cache"
+      run_locally: "php artisan config:clear"
+  route:cache:
+    - desc: "Cache routes"
+      run_locally: "php artisan route:cache"
+  route:clear:
+    - desc: "Clear route cache"
+      run_locally: "php artisan route:clear"
+  route:list:
+    - desc: "List all routes"
+      run_locally: "php artisan route:list"
+  view:cache:
+    - desc: "Cache Blade views"
+      run_locally: "php artisan view:cache"
+  view:clear:
+    - desc: "Clear view cache"
+      run_locally: "php artisan view:clear"
+  optimize:
+    - desc: "Optimize framework for production"
+      run_locally: "php artisan optimize"
+  optimize:clear:
+    - desc: "Clear all cached data"
+      run_locally: "php artisan optimize:clear"
+
+  # Keys & auth
+  key:generate:
+    - desc: "Generate application key"
+      run_locally: "php artisan key:generate"
+  storage:link:
+    - desc: "Create symbolic link for storage"
+      run_locally: "php artisan storage:link"
+
+  # Events
+  event:cache:
+    - desc: "Cache events and listeners"
+      run_locally: "php artisan event:cache"
+  event:clear:
+    - desc: "Clear cached events"
+      run_locally: "php artisan event:clear"
+  event:list:
+    - desc: "List all events and listeners"
+      run_locally: "php artisan event:list"
