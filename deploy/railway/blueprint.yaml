@@ -4,6 +4,23 @@ meta:
   name: "Railway"
   description: "Deploy to Railway"
 
+platform:
+  slug: "railway"
+  cli_tool: "railway"
+  install_hint: "npm install -g @railway/cli"
+  auth_env_var: "RAILWAY_TOKEN"
+  login_hint: "Run 'railway login' or set RAILWAY_TOKEN"
+  detect_config:
+    - "railway.toml"
+    - "railway.json"
+  detect_state:
+    - ".railway"
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    rollback: true
+    preview: true
+
 config:
   # Railway project name (optional, will use directory name if not set)
   project_name: ""

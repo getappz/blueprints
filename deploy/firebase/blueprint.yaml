@@ -4,6 +4,21 @@ meta:
   name: "Firebase Hosting"
   description: "Deploy to Firebase Hosting"
 
+platform:
+  slug: "firebase"
+  cli_tool: "firebase"
+  install_hint: "npm install -g firebase-tools"
+  auth_env_var: "FIREBASE_TOKEN"
+  login_hint: "Run 'firebase login' or set FIREBASE_TOKEN"
+  detect_config:
+    - "firebase.json"
+  detect_state:
+    - ".firebaserc"
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    preview: true
+
 config:
   # Firebase project ID (required)
   project_id: ""

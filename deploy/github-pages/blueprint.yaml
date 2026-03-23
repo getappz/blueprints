@@ -4,6 +4,22 @@ meta:
   name: "GitHub Pages"
   description: "Deploy to GitHub Pages"
 
+platform:
+  slug: "github-pages"
+  cli_tool: "gh-pages"
+  install_hint: "npm install -g gh-pages"
+  auth_env_var: "GITHUB_TOKEN"
+  login_hint: "Set GITHUB_TOKEN or use 'gh auth login'"
+  detect_config: []
+  detect_state: []
+  detect_content:
+    - path: ".github/workflows/*.yml"
+      contains: "actions/deploy-pages"
+    - path: ".github/workflows/*.yml"
+      contains: "peaceiris/actions-gh-pages"
+  capabilities:
+    custom_domains: true
+
 config:
   # GitHub repository (format: owner/repo)
   repository: ""

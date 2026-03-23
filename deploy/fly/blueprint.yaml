@@ -4,6 +4,20 @@ meta:
   name: "Fly.io"
   description: "Deploy to Fly.io"
 
+platform:
+  slug: "fly"
+  cli_tool: "flyctl"
+  install_hint: "curl -L https://fly.io/install.sh | sh"
+  auth_env_var: "FLY_API_TOKEN"
+  login_hint: "Run 'flyctl auth login' or set FLY_API_TOKEN"
+  detect_config:
+    - "fly.toml"
+  detect_state: []
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    rollback: true
+
 config:
   # Fly.io app name (required)
   app_name: ""

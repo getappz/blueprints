@@ -4,6 +4,22 @@ meta:
   name: "Cloudflare Pages"
   description: "Deploy to Cloudflare Pages"
 
+platform:
+  slug: "cloudflare-pages"
+  cli_tool: "wrangler"
+  install_hint: "npm install -g wrangler"
+  auth_env_var: "CLOUDFLARE_API_TOKEN"
+  login_hint: "Run 'wrangler login' or set CLOUDFLARE_API_TOKEN"
+  detect_config:
+    - "wrangler.toml"
+    - "wrangler.json"
+    - "wrangler.jsonc"
+  detect_state: []
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    preview: true
+
 config:
   # Cloudflare account ID (required)
   account_id: ""

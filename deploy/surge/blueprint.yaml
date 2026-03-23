@@ -4,6 +4,19 @@ meta:
   name: "Surge"
   description: "Deploy to Surge.sh"
 
+platform:
+  slug: "surge"
+  cli_tool: "surge"
+  install_hint: "npm install -g surge"
+  auth_env_var: "SURGE_TOKEN"
+  login_hint: "Run 'surge login' or set SURGE_TOKEN"
+  detect_config: []
+  detect_state: []
+  detect_content:
+    - path: "CNAME"
+      contains: ".surge.sh"
+  capabilities: {}
+
 config:
   # Surge domain (e.g., myapp.surge.sh)
   domain: ""

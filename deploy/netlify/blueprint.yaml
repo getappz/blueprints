@@ -4,6 +4,22 @@ meta:
   name: "Netlify"
   description: "Deploy to Netlify"
 
+platform:
+  slug: "netlify"
+  cli_tool: "netlify"
+  install_hint: "npm install -g netlify-cli"
+  auth_env_var: "NETLIFY_AUTH_TOKEN"
+  login_hint: "Run 'netlify login' or set NETLIFY_AUTH_TOKEN"
+  detect_config:
+    - "netlify.toml"
+  detect_state:
+    - ".netlify/state.json"
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    rollback: true
+    preview: true
+
 config:
   # Netlify site ID (optional, can be auto-detected from netlify.toml)
   site_id: ""

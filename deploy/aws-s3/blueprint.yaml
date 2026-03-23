@@ -4,6 +4,19 @@ meta:
   name: "AWS S3 + CloudFront"
   description: "Deploy to AWS S3 with optional CloudFront CDN"
 
+platform:
+  slug: "aws-s3"
+  cli_tool: "aws"
+  install_hint: "pip install awscli"
+  auth_env_var: "AWS_ACCESS_KEY_ID"
+  login_hint: "Set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY"
+  detect_config:
+    - "s3-deploy.json"
+    - "samconfig.toml"
+  detect_state: []
+  capabilities:
+    custom_domains: true
+
 config:
   # AWS S3 bucket name (required)
   s3_bucket: ""

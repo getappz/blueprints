@@ -4,6 +4,19 @@ meta:
   name: "Render"
   description: "Deploy to Render"
 
+platform:
+  slug: "render"
+  cli_tool: "render"
+  install_hint: "npm install -g render-cli"
+  auth_env_var: "RENDER_API_KEY"
+  login_hint: "Get API key from https://dashboard.render.com/u/settings#api-keys"
+  detect_config:
+    - "render.yaml"
+    - "render.yml"
+  detect_state: []
+  capabilities:
+    custom_domains: true
+
 config:
   # Render service ID (required)
   service_id: ""

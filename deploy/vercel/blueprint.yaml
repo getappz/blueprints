@@ -4,6 +4,22 @@ meta:
   name: "Vercel"
   description: "Deploy to Vercel"
 
+platform:
+  slug: "vercel"
+  cli_tool: "vercel"
+  install_hint: "npm install -g vercel"
+  auth_env_var: "VERCEL_TOKEN"
+  login_hint: "Run 'vercel login' or set VERCEL_TOKEN"
+  detect_config:
+    - "vercel.json"
+  detect_state:
+    - ".vercel/project.json"
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    rollback: true
+    preview: true
+
 config:
   # Vercel project name (optional, will use directory name if not set)
   project_name: ""

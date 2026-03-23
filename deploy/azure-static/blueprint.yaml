@@ -4,6 +4,21 @@ meta:
   name: "Azure Static Web Apps"
   description: "Deploy to Azure Static Web Apps"
 
+platform:
+  slug: "azure-static"
+  cli_tool: "swa"
+  install_hint: "npm install -g @azure/static-web-apps-cli"
+  auth_env_var: "AZURE_STATIC_WEB_APPS_API_TOKEN"
+  login_hint: "Run 'az login' or set AZURE_STATIC_WEB_APPS_API_TOKEN"
+  detect_config:
+    - "staticwebapp.config.json"
+    - "swa-cli.config.json"
+  detect_state: []
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    preview: true
+
 config:
   # Azure Static Web App name (required)
   app_name: ""

@@ -4,6 +4,23 @@ meta:
   name: "Heroku"
   description: "Deploy to Heroku"
 
+platform:
+  slug: "heroku"
+  cli_tool: "heroku"
+  install_hint: "npm install -g heroku"
+  auth_env_var: "HEROKU_API_KEY"
+  login_hint: "Run 'heroku login' or set HEROKU_API_KEY"
+  detect_config:
+    - "app.json"
+    - "Procfile"
+    - "heroku.yml"
+  detect_state:
+    - ".heroku"
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    rollback: true
+
 config:
   # Heroku app name (required)
   app_name: ""
