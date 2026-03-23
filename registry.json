@@ -94,6 +94,14 @@
     "railway": { "description": "Deploy to Railway" },
     "render": { "description": "Deploy to Render" },
     "surge": { "description": "Deploy to Surge.sh" },
-    "azure-static": { "description": "Deploy to Azure Static Web Apps" }
+    "azure-static": { "description": "Deploy to Azure Static Web Apps" },
+    "deno-deploy": { "description": "Deploy to Deno Deploy" },
+    "cloudflare-workers": { "description": "Deploy to Cloudflare Workers" },
+    "gitlab-pages": { "description": "Deploy to GitLab Pages via CI/CD pipeline" },
+    "aws-amplify": { "description": "Deploy to AWS Amplify Hosting" },
+    "aws-sst": { "description": "Deploy full-stack apps to AWS with SST" },
+    "google-cloud": { "description": "Deploy to Google Cloud (App Engine or Cloud Run)" },
+    "zeabur": { "description": "Deploy to Zeabur" },
+    "zerops": { "description": "Deploy to Zerops" }
   }
 }

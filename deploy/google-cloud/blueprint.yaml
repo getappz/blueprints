@@ -1,0 +1,91 @@
+version: 1
+
+meta:
+  name: "Google Cloud"
+  description: "Deploy to Google Cloud (App Engine or Cloud Run)"
+
+platform:
+  slug: "google-cloud"
+  cli_tool: "gcloud"
+  install_hint: "See https://cloud.google.com/sdk/docs/install"
+  auth_env_var: "GOOGLE_APPLICATION_CREDENTIALS"
+  login_hint: "Run 'gcloud auth login' or set GOOGLE_APPLICATION_CREDENTIALS to a service account key file"
+  detect_config:
+    - "app.yaml"
+    - "app.yml"
+    - "cloudbuild.yaml"
+  detect_state: []
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    rollback: true
+
+config:
+  # Google Cloud project ID (required)
+  project_id: ""
+  # Deployment target: "appengine" or "cloudrun"
+  deploy_target: "cloudrun"
+  # Cloud Run service name (for Cloud Run deployments)
+  service_name: ""
+  # Google Cloud region (e.g., us-central1)
+  region: "us-central1"
+  # Build command
+  build_command: "npm run build"
+  # Docker image name (for Cloud Run, e.g., gcr.io/my-project/my-service)
+  image: ""
+  # Path to service account key JSON (set via GOOGLE_APPLICATION_CREDENTIALS env var)
+  google_application_credentials: ""
+
+
+setup:
+  - desc: "Authenticate with Google Cloud SDK"
+    run: "gcloud auth login"
+
+tasks:
+  deploy:
+    - desc: "Deploy to Google Cloud (Cloud Run)"
+      run: "gcloud run deploy {{service_name}} --source . --region {{region}} --project {{project_id}} --quiet"
+
+  deploy:appengine:
+    - desc: "Deploy to Google App Engine"
+      run: "gcloud app deploy --quiet --project {{project_id}}"
+
+  deploy:production:
+    - desc: "Deploy to production on Google Cloud Run"
+      run: "gcloud run deploy {{service_name}} --source . --region {{region}} --project {{project_id}} --quiet"
+
+  gcloud:login:
+    - desc: "Authenticate with Google Cloud"
+      run: "gcloud auth login"
+
+  gcloud:project:set:
+    - desc: "Set active Google Cloud project"
+      run: "gcloud config set project {{project_id}}"
+
+  gcloud:services:list:
+    - desc: "List deployed Cloud Run services"
+      run: "gcloud run services list --region {{region}} --project {{project_id}}"
+
+  gcloud:env:list:
+    - desc: "List environment variables for Cloud Run service"
+      run: "gcloud run services describe {{service_name}} --region {{region}} --project {{project_id}} --format='value(spec.template.spec.containers[0].env)'"
+
+  gcloud:env:set:
+    - desc: "Set environment variable on Cloud Run service (set GCP_ENV_KEY and GCP_ENV_VALUE)"
+      run: "gcloud run services update {{service_name}} --update-env-vars {{GCP_ENV_KEY}}={{GCP_ENV_VALUE}} --region {{region}} --project {{project_id}}"
+
+  gcloud:logs:
+    - desc: "View Cloud Run service logs"
+      run: "gcloud run services logs read {{service_name}} --region {{region}} --project {{project_id}}"
+
+  gcloud:rollback:
+    - desc: "Rollback to previous Cloud Run revision (set GCP_REVISION)"
+      run: "gcloud run services update-traffic {{service_name}} --to-revisions {{GCP_REVISION}}=100 --region {{region}} --project {{project_id}}"
+
+  gcloud:domain:map:
+    - desc: "Map custom domain to Cloud Run service (set GCP_DOMAIN)"
+      run: "gcloud beta run domain-mappings create --service {{service_name}} --domain {{GCP_DOMAIN}} --region {{region}} --project {{project_id}}"
+
+  gcloud:open:
+    - desc: "Open Cloud Run service URL"
+      run: "gcloud run services describe {{service_name}} --region {{region}} --project {{project_id}} --format='value(status.url)' | xargs open"

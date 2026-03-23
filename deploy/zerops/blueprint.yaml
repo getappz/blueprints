@@ -1,0 +1,77 @@
+version: 1
+
+meta:
+  name: "Zerops"
+  description: "Deploy to Zerops"
+
+platform:
+  slug: "zerops"
+  cli_tool: "zcli"
+  install_hint: "npm install -g @zerops/zcli"
+  auth_env_var: "ZEROPS_TOKEN"
+  login_hint: "Run 'zcli login' or set ZEROPS_TOKEN from https://app.zerops.io/settings/token-management"
+  detect_config:
+    - "zerops.yml"
+  detect_state: []
+  capabilities:
+    env_vars: true
+    custom_domains: true
+
+config:
+  # Zerops project name (required)
+  project_name: ""
+  # Zerops service name (required, must match zerops.yml)
+  service_name: ""
+  # Build command (defined in zerops.yml, this is for reference)
+  build_command: "npm run build"
+  # Build output directory (defined in zerops.yml)
+  build_output_dir: "dist"
+  # Zerops token (set via ZEROPS_TOKEN env var)
+  zerops_token: ""
+
+
+setup:
+  - desc: "Install Zerops CLI"
+    add_dependency: ["@zerops/zcli"]
+    dev: true
+
+tasks:
+  deploy:
+    - desc: "Push and deploy to Zerops"
+      run: "zcli push"
+
+  deploy:production:
+    - desc: "Push to production service on Zerops"
+      run: "zcli push --serviceId {{service_name}}"
+
+  zerops:login:
+    - desc: "Authenticate with Zerops"
+      run: "zcli login"
+
+  zerops:init:
+    - desc: "Create zerops.yml configuration file"
+      run: "zcli project import"
+
+  zerops:vpn:start:
+    - desc: "Start VPN tunnel to Zerops project"
+      run: "zcli vpn up"
+
+  zerops:vpn:stop:
+    - desc: "Stop VPN tunnel to Zerops project"
+      run: "zcli vpn down"
+
+  zerops:env:list:
+    - desc: "List environment variables (set ZEROPS_SERVICE_ID)"
+      run: "zcli service env list --serviceId {{ZEROPS_SERVICE_ID}}"
+
+  zerops:logs:
+    - desc: "View service runtime logs"
+      run: "zcli service log --serviceId {{service_name}}"
+
+  zerops:build:logs:
+    - desc: "View build logs for last deploy"
+      run: "zcli service log --serviceId {{service_name}} --showBuildLogs"
+
+  zerops:status:
+    - desc: "Check service status"
+      run: "zcli service status --serviceId {{service_name}}"

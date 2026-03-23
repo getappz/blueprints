@@ -1,0 +1,87 @@
+version: 1
+
+meta:
+  name: "Zeabur"
+  description: "Deploy to Zeabur"
+
+platform:
+  slug: "zeabur"
+  cli_tool: "zeabur"
+  install_hint: "npm install -g zeabur"
+  auth_env_var: "ZEABUR_TOKEN"
+  login_hint: "Run 'zeabur auth login' or set ZEABUR_TOKEN from https://zeabur.com/account/apikey"
+  detect_config:
+    - "zeabur.json"
+    - "zbpack.json"
+  detect_state: []
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    preview: true
+
+config:
+  # Zeabur project name (optional, will use directory name if not set)
+  project_name: ""
+  # Zeabur service name (optional)
+  service_name: ""
+  # Deployment region (e.g., hkg1, sin1, us-west-1)
+  region: ""
+  # Build command (optional, Zeabur auto-detects for most frameworks)
+  build_command: ""
+  # Zeabur token (set via ZEABUR_TOKEN env var)
+  zeabur_token: ""
+
+
+setup:
+  - desc: "Install Zeabur CLI"
+    add_dependency: ["zeabur"]
+    dev: true
+
+tasks:
+  deploy:
+    - desc: "Deploy to Zeabur"
+      run: "zeabur deploy"
+
+  deploy:preview:
+    - desc: "Deploy preview environment to Zeabur"
+      run: "zeabur deploy --prebuilt"
+
+  deploy:production:
+    - desc: "Deploy to production on Zeabur"
+      run: "zeabur deploy"
+
+  zeabur:login:
+    - desc: "Authenticate with Zeabur"
+      run: "zeabur auth login"
+
+  zeabur:init:
+    - desc: "Initialize Zeabur project"
+      run: "zeabur init"
+
+  zeabur:env:list:
+    - desc: "List environment variables"
+      run: "zeabur variable list"
+
+  zeabur:env:set:
+    - desc: "Set environment variable (set ZEABUR_ENV_KEY and ZEABUR_ENV_VALUE)"
+      run: "zeabur variable set {{ZEABUR_ENV_KEY}}={{ZEABUR_ENV_VALUE}}"
+
+  zeabur:domain:list:
+    - desc: "List domains"
+      run: "zeabur domain list"
+
+  zeabur:domain:add:
+    - desc: "Add custom domain (set ZEABUR_DOMAIN)"
+      run: "zeabur domain add {{ZEABUR_DOMAIN}}"
+
+  zeabur:logs:
+    - desc: "View deployment logs"
+      run: "zeabur logs"
+
+  zeabur:open:
+    - desc: "Open Zeabur dashboard in browser"
+      run: "zeabur open"
+
+  zeabur:status:
+    - desc: "Check service status"
+      run: "zeabur status"

@@ -1,0 +1,78 @@
+version: 1
+
+meta:
+  name: "GitLab Pages"
+  description: "Deploy to GitLab Pages via CI/CD pipeline"
+
+platform:
+  slug: "gitlab-pages"
+  cli_tool: ~
+  install_hint: ~
+  auth_env_var: "GITLAB_TOKEN"
+  login_hint: "Set GITLAB_TOKEN from https://gitlab.com/-/user_settings/personal_access_tokens"
+  detect_config: []
+  detect_state: []
+  detect_content:
+    - path: ".gitlab-ci.yml"
+      contains: "pages:"
+  capabilities:
+    custom_domains: true
+
+config:
+  # GitLab project path (format: namespace/project, e.g., myorg/mysite)
+  project_path: ""
+  # Build command
+  build_command: "npm run build"
+  # Build output directory — GitLab Pages always serves from 'public/'
+  build_output_dir: "dist"
+  # Branch to deploy from (default: main)
+  deploy_branch: "main"
+  # GitLab instance URL (default: https://gitlab.com)
+  gitlab_url: "https://gitlab.com"
+  # GitLab token (set via GITLAB_TOKEN env var)
+  gitlab_token: ""
+
+
+setup:
+  - desc: "Create .gitlab-ci.yml with Pages job"
+    run: |
+      cat > .gitlab-ci.yml << 'EOF'
+      image: node:lts
+
+      pages:
+        stage: deploy
+        script:
+          - npm ci
+          - npm run build
+          - cp -r dist public
+        artifacts:
+          paths:
+            - public
+        only:
+          - main
+      EOF
+
+tasks:
+  deploy:
+    - desc: "Trigger GitLab Pages deploy via git push"
+      run: "git push origin {{deploy_branch}}"
+
+  deploy:production:
+    - desc: "Push to deploy branch and trigger GitLab CI/CD pipeline"
+      run: "git push origin {{deploy_branch}}"
+
+  gitlab:pipeline:status:
+    - desc: "Check pipeline status (requires glab CLI)"
+      run: "glab ci status"
+
+  gitlab:pipeline:view:
+    - desc: "View pipeline details (requires glab CLI)"
+      run: "glab ci view"
+
+  gitlab:pages:open:
+    - desc: "Open GitLab Pages URL in browser (requires glab CLI)"
+      run: "glab repo view --web"
+
+  gitlab:domain:set:
+    - desc: "Set custom domain (requires glab CLI, set GITLAB_DOMAIN)"
+      run: "glab api --method POST projects/{{project_path}}/pages/domains --field domain={{GITLAB_DOMAIN}}"

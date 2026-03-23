@@ -1,0 +1,76 @@
+version: 1
+
+meta:
+  name: "SST (AWS)"
+  description: "Deploy full-stack apps to AWS with SST"
+
+platform:
+  slug: "aws-sst"
+  cli_tool: "sst"
+  install_hint: "npx sst"
+  auth_env_var: "AWS_ACCESS_KEY_ID"
+  login_hint: "Set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY, or run 'sst auth'"
+  detect_config:
+    - "sst.config.ts"
+    - "sst.config.mjs"
+  detect_state:
+    - ".sst"
+  capabilities:
+    env_vars: true
+    custom_domains: true
+
+config:
+  # SST app name (defined in sst.config.ts, optional override)
+  app_name: ""
+  # Deployment stage (e.g., production, staging, dev)
+  stage: "production"
+  # AWS region (e.g., us-east-1)
+  region: "us-east-1"
+  # Build command (run before sst deploy if needed)
+  build_command: "npm run build"
+  # AWS Access Key ID (set via AWS_ACCESS_KEY_ID env var)
+  aws_access_key_id: ""
+  # AWS Secret Access Key (set via AWS_SECRET_ACCESS_KEY env var)
+  aws_secret_access_key: ""
+
+
+setup:
+  - desc: "Initialize SST project"
+    run: "npx sst init"
+
+tasks:
+  deploy:
+    - desc: "Deploy to AWS with SST (production stage)"
+      run: "sst deploy --stage {{stage}}"
+
+  deploy:production:
+    - desc: "Deploy to production stage on AWS"
+      run: "sst deploy --stage production"
+
+  sst:dev:
+    - desc: "Start SST dev mode (live Lambda debugging)"
+      run: "sst dev"
+
+  sst:diff:
+    - desc: "Preview changes before deploying"
+      run: "sst diff --stage {{stage}}"
+
+  sst:remove:
+    - desc: "Remove deployed SST stack (set SST_STAGE)"
+      run: "sst remove --stage {{stage}}"
+
+  sst:env:list:
+    - desc: "List SST secrets"
+      run: "sst secret list --stage {{stage}}"
+
+  sst:env:set:
+    - desc: "Set SST secret (set SST_SECRET_KEY and SST_SECRET_VALUE)"
+      run: "sst secret set {{SST_SECRET_KEY}} {{SST_SECRET_VALUE}} --stage {{stage}}"
+
+  sst:console:
+    - desc: "Open SST console in browser"
+      run: "sst console"
+
+  sst:status:
+    - desc: "Show deployed resource status"
+      run: "sst status --stage {{stage}}"

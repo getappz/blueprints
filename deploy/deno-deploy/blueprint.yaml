@@ -1,0 +1,64 @@
+version: 1
+
+meta:
+  name: "Deno Deploy"
+  description: "Deploy to Deno Deploy"
+
+platform:
+  slug: "deno-deploy"
+  cli_tool: "deployctl"
+  install_hint: "deno install -gArf jsr:@deno/deployctl"
+  auth_env_var: "DENO_DEPLOY_TOKEN"
+  login_hint: "Set DENO_DEPLOY_TOKEN from https://dash.deno.com/account#access-tokens"
+  detect_config:
+    - "deno.json"
+    - "deno.jsonc"
+  detect_state: []
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    preview: true
+
+config:
+  # Deno Deploy project name (required)
+  project_name: ""
+  # Entry point file (e.g., main.ts, src/main.ts)
+  entry_point: "main.ts"
+  # Deno Deploy organization (optional)
+  org: ""
+  # Deno Deploy token (set via DENO_DEPLOY_TOKEN env var)
+  deno_deploy_token: ""
+
+
+setup:
+  - desc: "Install deployctl"
+    run: "deno install -gArf jsr:@deno/deployctl"
+
+tasks:
+  deploy:
+    - desc: "Deploy to Deno Deploy"
+      run: "deployctl deploy --project={{project_name}} {{entry_point}}"
+
+  deploy:preview:
+    - desc: "Deploy preview to Deno Deploy"
+      run: "deployctl deploy --project={{project_name}} --preview {{entry_point}}"
+
+  deploy:production:
+    - desc: "Deploy to production on Deno Deploy"
+      run: "deployctl deploy --project={{project_name}} --prod {{entry_point}}"
+
+  deno:env:list:
+    - desc: "List environment variables"
+      run: "deployctl env list --project={{project_name}}"
+
+  deno:env:set:
+    - desc: "Set environment variable (set DENO_ENV_KEY and DENO_ENV_VALUE)"
+      run: "deployctl env set {{DENO_ENV_KEY}}={{DENO_ENV_VALUE}} --project={{project_name}}"
+
+  deno:logs:
+    - desc: "View deployment logs"
+      run: "deployctl logs --project={{project_name}}"
+
+  deno:deployments:list:
+    - desc: "List recent deployments"
+      run: "deployctl deployments list --project={{project_name}}"

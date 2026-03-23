@@ -1,0 +1,92 @@
+version: 1
+
+meta:
+  name: "AWS Amplify"
+  description: "Deploy to AWS Amplify Hosting"
+
+platform:
+  slug: "aws-amplify"
+  cli_tool: "amplify"
+  install_hint: "npm install -g @aws-amplify/cli"
+  auth_env_var: "AWS_ACCESS_KEY_ID"
+  login_hint: "Run 'amplify configure' or set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY"
+  detect_config:
+    - "amplify.yml"
+    - "amplify/backend"
+  detect_state:
+    - "amplify/.config/project-config.json"
+  capabilities:
+    env_vars: true
+    custom_domains: true
+    preview: true
+
+config:
+  # AWS Amplify app name (required)
+  app_name: ""
+  # AWS region (e.g., us-east-1)
+  region: "us-east-1"
+  # Amplify environment name (e.g., prod, staging, dev)
+  environment: "prod"
+  # Build command
+  build_command: "npm run build"
+  # Build output directory
+  build_output_dir: "dist"
+  # AWS Access Key ID (set via AWS_ACCESS_KEY_ID env var)
+  aws_access_key_id: ""
+  # AWS Secret Access Key (set via AWS_SECRET_ACCESS_KEY env var)
+  aws_secret_access_key: ""
+
+
+setup:
+  - desc: "Install AWS Amplify CLI"
+    add_dependency: ["@aws-amplify/cli"]
+    dev: true
+
+tasks:
+  deploy:
+    - desc: "Publish app to AWS Amplify Hosting"
+      run: "amplify publish --yes"
+
+  deploy:preview:
+    - desc: "Deploy preview branch to AWS Amplify"
+      run: "amplify publish --yes --env {{environment}}"
+
+  deploy:production:
+    - desc: "Publish to production environment on AWS Amplify"
+      run: "amplify publish --yes --env {{environment}}"
+
+  amplify:init:
+    - desc: "Initialize AWS Amplify project"
+      run: "amplify init"
+
+  amplify:configure:
+    - desc: "Configure AWS credentials for Amplify"
+      run: "amplify configure"
+
+  amplify:status:
+    - desc: "Check Amplify backend status"
+      run: "amplify status"
+
+  amplify:env:list:
+    - desc: "List Amplify environments"
+      run: "amplify env list"
+
+  amplify:env:add:
+    - desc: "Add a new Amplify environment (set AMPLIFY_ENV_NAME)"
+      run: "amplify env add {{AMPLIFY_ENV_NAME}}"
+
+  amplify:env:switch:
+    - desc: "Switch active Amplify environment (set AMPLIFY_ENV_NAME)"
+      run: "amplify env checkout {{AMPLIFY_ENV_NAME}}"
+
+  amplify:hosting:configure:
+    - desc: "Configure Amplify Hosting settings"
+      run: "amplify add hosting"
+
+  amplify:open:
+    - desc: "Open Amplify console in browser"
+      run: "amplify console"
+
+  amplify:logs:
+    - desc: "View Amplify function logs"
+      run: "amplify function invoke"
