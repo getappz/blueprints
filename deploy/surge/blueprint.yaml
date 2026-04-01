@@ -9,7 +9,7 @@ platform:
   cli_tool: "surge"
   install_hint: "npm install -g surge"
   auth_env_var: "SURGE_TOKEN"
-  login_hint: "Run 'surge login' or set SURGE_TOKEN"
+  login_hint: "surge login"
   detect_config: []
   detect_state: []
   detect_content:

@@ -9,7 +9,7 @@ platform:
   cli_tool: "zcli"
   install_hint: "npm install -g @zerops/zcli"
   auth_env_var: "ZEROPS_TOKEN"
-  login_hint: "Run 'zcli login' or set ZEROPS_TOKEN from https://app.zerops.io/settings/token-management"
+  login_hint: "zcli login"
   detect_config:
     - "zerops.yml"
   detect_state: []

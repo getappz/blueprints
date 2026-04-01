@@ -9,7 +9,7 @@ platform:
   cli_tool: "heroku"
   install_hint: "npm install -g heroku"
   auth_env_var: "HEROKU_API_KEY"
-  login_hint: "Run 'heroku login' or set HEROKU_API_KEY"
+  login_hint: "heroku login"
   detect_config:
     - "app.json"
     - "Procfile"

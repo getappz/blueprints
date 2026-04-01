@@ -9,7 +9,7 @@ platform:
   cli_tool: "netlify"
   install_hint: "npm install -g netlify-cli"
   auth_env_var: "NETLIFY_AUTH_TOKEN"
-  login_hint: "Run 'netlify login' or set NETLIFY_AUTH_TOKEN"
+  login_hint: "netlify login"
   detect_config:
     - "netlify.toml"
   detect_state:
@@ -19,6 +19,16 @@ platform:
     custom_domains: true
     rollback: true
     preview: true
+  ci:
+    trigger_branches: ["main"]
+    secrets:
+      - name: NETLIFY_AUTH_TOKEN
+        from_env: NETLIFY_AUTH_TOKEN
+        prompt: "Netlify auth token"
+      - name: NETLIFY_SITE_ID
+        from_state_file: .netlify/state.json
+        state_json_key: siteId
+        prompt: "Netlify site ID"
 
 config:
   # Netlify site ID (optional, can be auto-detected from netlify.toml)

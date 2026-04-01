@@ -9,7 +9,7 @@ platform:
   cli_tool: "firebase"
   install_hint: "npm install -g firebase-tools"
   auth_env_var: "FIREBASE_TOKEN"
-  login_hint: "Run 'firebase login' or set FIREBASE_TOKEN"
+  login_hint: "firebase login"
   detect_config:
     - "firebase.json"
   detect_state:

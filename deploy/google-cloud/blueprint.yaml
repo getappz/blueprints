@@ -9,7 +9,7 @@ platform:
   cli_tool: "gcloud"
   install_hint: "See https://cloud.google.com/sdk/docs/install"
   auth_env_var: "GOOGLE_APPLICATION_CREDENTIALS"
-  login_hint: "Run 'gcloud auth login' or set GOOGLE_APPLICATION_CREDENTIALS to a service account key file"
+  login_hint: "gcloud auth login"
   detect_config:
     - "app.yaml"
     - "app.yml"

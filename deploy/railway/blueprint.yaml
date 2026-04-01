@@ -9,7 +9,7 @@ platform:
   cli_tool: "railway"
   install_hint: "npm install -g @railway/cli"
   auth_env_var: "RAILWAY_TOKEN"
-  login_hint: "Run 'railway login' or set RAILWAY_TOKEN"
+  login_hint: "railway login"
   detect_config:
     - "railway.toml"
     - "railway.json"

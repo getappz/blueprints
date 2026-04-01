@@ -9,7 +9,7 @@ platform:
   cli_tool: "swa"
   install_hint: "npm install -g @azure/static-web-apps-cli"
   auth_env_var: "AZURE_STATIC_WEB_APPS_API_TOKEN"
-  login_hint: "Run 'az login' or set AZURE_STATIC_WEB_APPS_API_TOKEN"
+  login_hint: "az login"
   detect_config:
     - "staticwebapp.config.json"
     - "swa-cli.config.json"

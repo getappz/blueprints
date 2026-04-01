@@ -9,7 +9,7 @@ platform:
   cli_tool: "zeabur"
   install_hint: "npm install -g zeabur"
   auth_env_var: "ZEABUR_TOKEN"
-  login_hint: "Run 'zeabur auth login' or set ZEABUR_TOKEN from https://zeabur.com/account/apikey"
+  login_hint: "zeabur auth login"
   detect_config:
     - "zeabur.json"
     - "zbpack.json"

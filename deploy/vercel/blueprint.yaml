@@ -9,7 +9,7 @@ platform:
   cli_tool: "vercel"
   install_hint: "npm install -g vercel"
   auth_env_var: "VERCEL_TOKEN"
-  login_hint: "Run 'vercel login' or set VERCEL_TOKEN"
+  login_hint: "vercel login"
   detect_config:
     - "vercel.json"
   detect_state:
@@ -19,6 +19,20 @@ platform:
     custom_domains: true
     rollback: true
     preview: true
+  ci:
+    trigger_branches: ["main"]
+    secrets:
+      - name: VERCEL_TOKEN
+        from_env: VERCEL_TOKEN
+        prompt: "Vercel API token (https://vercel.com/account/tokens)"
+      - name: VERCEL_ORG_ID
+        from_state_file: .vercel/project.json
+        state_json_key: orgId
+        prompt: "Vercel Org ID"
+      - name: VERCEL_PROJECT_ID
+        from_state_file: .vercel/project.json
+        state_json_key: projectId
+        prompt: "Vercel Project ID"
 
 config:
   # Vercel project name (optional, will use directory name if not set)

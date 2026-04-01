@@ -9,7 +9,7 @@ platform:
   cli_tool: "amplify"
   install_hint: "npm install -g @aws-amplify/cli"
   auth_env_var: "AWS_ACCESS_KEY_ID"
-  login_hint: "Run 'amplify configure' or set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY"
+  login_hint: "amplify configure"
   detect_config:
     - "amplify.yml"
     - "amplify/backend"
